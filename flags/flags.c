@@ -118,6 +118,27 @@ int set_flags_with_args(char** flags_with_args, int count)
 }
 
 
+char* get_flag(char* flagname)
+{
+	struct flaglist* flaglist = __flaglist__;
+	while(flaglist)
+	{
+		if (strcmp(flagname, flaglist->first->flagname) == 0)
+		{ // match
+			if (flaglist -> first -> is_parameter_flag)
+			{
+				return flaglist -> first -> flagarg;
+			}
+			else
+			{
+				return (char*)1;
+			}
+		}
+		flaglist = flaglist -> rest;
+	}
+	return 0;
+}
+
 
 int error(void)
 {
@@ -147,25 +168,6 @@ int has_args(char* arg)
 	return 0;
 }
 
-
-void printflags()
-{
-	int count = 0;
-	struct flaglist* flaglist = __flaglist__;
-	while(flaglist)
-	{
-		printf("flag #%i:\n", count++);
-		struct flag *f = flaglist->first;
-		printf("\t%s\n", f->flagname);
-
-		if (f -> is_true_flag && f -> is_parameter_flag)
-		{
-			printf("\t%s\n", f -> flagarg);
-		}
-
-		flaglist = flaglist -> rest;
-	}
-}
 
 
 struct paramlist* get_real_params()

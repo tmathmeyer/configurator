@@ -1,5 +1,5 @@
 
-#include "flags.h"
+#include "flags/flags.h"
 
 #include <stdio.h>
 
@@ -13,13 +13,21 @@ int main(int argc, char** argv)
 	set_flags_with_args(arg_flags, 2);
 
 	parse_flags(argv+1, argc-1);
-	//printflags();
+	
 
-	struct paramlist* p = get_real_params();
-	int c = 0;
-	for(;c<p->count; c++)
+
+	char* flag = get_flag("o");
+	if (flag == 0)
 	{
-		printf("%s\n", *((p->params)+c));
+		puts("not passed");
+	}
+	else if (flag == (char*)1)
+	{
+		puts("flag triggered");
+	}
+	else
+	{
+		printf("flag value: %s\n", flag);
 	}
 
 	return 0;

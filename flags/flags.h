@@ -46,9 +46,4 @@ int set_flags_with_args(char** flags_with_args, int count);
 char* get_flag(char* flagname); //returns 0 if no match, 1 if set with no value
 struct paramlist* get_real_params();  //gets all the flags that arent flags, ie no -- or -
 
-
-void printflags();
-
-
-
 #endif
