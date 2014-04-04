@@ -120,6 +120,11 @@ int set_flags_with_args(char** flags_with_args, int count)
 
 char* get_flag(char* flagname)
 {
+	if (error())
+	{
+		return 0;
+	}
+
 	struct flaglist* flaglist = __flaglist__;
 	while(flaglist)
 	{
@@ -142,13 +147,13 @@ char* get_flag(char* flagname)
 
 int error(void)
 {
-	if (__flaglist__)
+	if (__flaglist__ != 0)
 	{
 		return 0;
 	}
 	else
 	{
-		perror("You havent parsed the flags yet!");
+		puts("You havent parsed the flags yet!");
 		return 1;
 	}
 }
@@ -172,6 +177,11 @@ int has_args(char* arg)
 
 struct paramlist* get_real_params()
 {
+	if (error())
+	{
+		return 0;
+	}
+
 	int count = 0;
 	char** real = (char**)(malloc(sizeof(char*) * __flags_not_flags));
 	struct paramlist* result = (struct paramlist*)
