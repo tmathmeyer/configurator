@@ -1,9 +1,11 @@
 /*
 
+Author: Ted Meyer
+
 Yes, I know there is a GNU library for reading flags, but I wanted to write my
 own for the sake of reducing the number of includes, and for my edification.
 
-This software is licensed under the GPLv2 public license
+This software is licensed under the The Happy Fun Ball License
 
 */
 

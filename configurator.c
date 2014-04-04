@@ -1,3 +1,10 @@
+/*
+
+Author: Ted Meyer
+
+This software is licensed under the The Happy Fun Ball License
+
+*/
 
 #include "flags/flags.h"
 
