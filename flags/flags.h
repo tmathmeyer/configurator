@@ -14,28 +14,24 @@ This software is licensed under the The Happy Fun Ball License
 #define FLAGS
 
 // STRUCTS
-struct flag
-{
+struct flag {
 	char* flagname; // the name of the flag, ie, 'r' in '-r'
 	char* flagarg;  // the value of the flag, ie, 'out' in '-o out'
 	int   is_parameter_flag; // whether this flag should be parsed with params
 	int   is_true_flag;      // whether this is a flag, or just a normal parameter
 };
 
-struct flaglist // dont use externally
-{
-	struct flag *first;    // yes this is modeled after scheme lists
+struct flaglist { // dont use externally
+	struct flag *first;
 	struct flaglist *rest;
 };
 
-struct arglist // dont use externally
-{
-	char* first;    // yes this is modeled after scheme lists
+struct arglist {// dont use externally
+	char* first;
 	struct arglist *rest;
 };
 
-struct paramlist
-{
+struct paramlist {
 	int count;
 	char** params;
 };
